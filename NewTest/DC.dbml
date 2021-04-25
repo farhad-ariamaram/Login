@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TestDB" Class="DCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=TestDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TestDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Tbl_Sitestyle_Alert" Member="Tbl_Sitestyle_Alerts">
+    <Type Name="Tbl_Sitestyle_Alert">
+      <Column Name="Fld_Sitestyle_Alert_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Alert_Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Alert_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Alert_AlerttypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Alert_Tbl_Sitestyle_AlertLanguage" Member="Tbl_Sitestyle_AlertLanguages" ThisKey="Fld_Sitestyle_Alert_Id" OtherKey="Fld_Sitestyle_AlertLanguage_AlertId" Type="Tbl_Sitestyle_AlertLanguage" />
+      <Association Name="Tbl_Sitestyle_Alerttype_Tbl_Sitestyle_Alert" Member="Tbl_Sitestyle_Alerttype" ThisKey="Fld_Sitestyle_Alert_AlerttypeId" OtherKey="Fld_Sitestyle_Alerttype_Id" Type="Tbl_Sitestyle_Alerttype" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_AlertLanguage" Member="Tbl_Sitestyle_AlertLanguages">
+    <Type Name="Tbl_Sitestyle_AlertLanguage">
+      <Column Name="Fld_Sitestyle_AlertLanguage_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_AlertLanguage_Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_AlertLanguage_Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_AlertLanguage_AlertId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_AlertLanguage_LanguageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Alert_Tbl_Sitestyle_AlertLanguage" Member="Tbl_Sitestyle_Alert" ThisKey="Fld_Sitestyle_AlertLanguage_AlertId" OtherKey="Fld_Sitestyle_Alert_Id" Type="Tbl_Sitestyle_Alert" IsForeignKey="true" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_AlertLanguage" Member="Tbl_Sitestyle_Language" ThisKey="Fld_Sitestyle_AlertLanguage_LanguageId" OtherKey="Fld_Sitestyle_Language_Id" Type="Tbl_Sitestyle_Language" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Alerttype" Member="Tbl_Sitestyle_Alerttypes">
+    <Type Name="Tbl_Sitestyle_Alerttype">
+      <Column Name="Fld_Sitestyle_Alerttype_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Alerttype_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Alerttype_Icon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Tbl_Sitestyle_Alerttype_Tbl_Sitestyle_Alert" Member="Tbl_Sitestyle_Alerts" ThisKey="Fld_Sitestyle_Alerttype_Id" OtherKey="Fld_Sitestyle_Alert_AlerttypeId" Type="Tbl_Sitestyle_Alert" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Css" Member="Tbl_Sitestyle_Csses">
+    <Type Name="Tbl_Sitestyle_Css">
+      <Column Name="Fld_Sitestyle_Css_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Css_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Css_LanguageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_Css" Member="Tbl_Sitestyle_Language" ThisKey="Fld_Sitestyle_Css_LanguageId" OtherKey="Fld_Sitestyle_Language_Id" Type="Tbl_Sitestyle_Language" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Font" Member="Tbl_Sitestyle_Fonts">
+    <Type Name="Tbl_Sitestyle_Font">
+      <Column Name="Fld_Sitestyle_Font_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Font_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Font_LanguageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_Font" Member="Tbl_Sitestyle_Language" ThisKey="Fld_Sitestyle_Font_LanguageId" OtherKey="Fld_Sitestyle_Language_Id" Type="Tbl_Sitestyle_Language" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Iso639_1" Member="Tbl_Sitestyle_Iso639_1s">
+    <Type Name="Tbl_Sitestyle_Iso639_1">
+      <Column Name="Fld_Sitestyle_Iso639_1_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Iso639_1_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Tbl_Sitestyle_Iso639_1_Tbl_Sitestyle_Language" Member="Tbl_Sitestyle_Languages" ThisKey="Fld_Sitestyle_Iso639_1_Id" OtherKey="Fld_Sitestyle_Language_Iso639_1_Id" Type="Tbl_Sitestyle_Language" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Iso639_2" Member="Tbl_Sitestyle_Iso639_2s">
+    <Type Name="Tbl_Sitestyle_Iso639_2">
+      <Column Name="Fld_Sitestyle_Iso639_2_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Iso639_2_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Tbl_Sitestyle_Iso639_2_Tbl_Sitestyle_Language" Member="Tbl_Sitestyle_Languages" ThisKey="Fld_Sitestyle_Iso639_2_Id" OtherKey="Fld_Sitestyle_Language_Iso639_2_Id" Type="Tbl_Sitestyle_Language" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Iso639_3" Member="Tbl_Sitestyle_Iso639_3s">
+    <Type Name="Tbl_Sitestyle_Iso639_3">
+      <Column Name="Fld_Sitestyle_Iso639_3_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Iso639_3_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Tbl_Sitestyle_Iso639_3_Tbl_Sitestyle_Language" Member="Tbl_Sitestyle_Languages" ThisKey="Fld_Sitestyle_Iso639_3_Id" OtherKey="Fld_Sitestyle_Language_Iso639_3_Id" Type="Tbl_Sitestyle_Language" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Language" Member="Tbl_Sitestyle_Languages">
+    <Type Name="Tbl_Sitestyle_Language">
+      <Column Name="Fld_Sitestyle_Language_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Language_Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Language_Direction" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Language_Iso639_1_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Language_Iso639_2_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Language_Iso639_3_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_AlertLanguage" Member="Tbl_Sitestyle_AlertLanguages" ThisKey="Fld_Sitestyle_Language_Id" OtherKey="Fld_Sitestyle_AlertLanguage_LanguageId" Type="Tbl_Sitestyle_AlertLanguage" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_Css" Member="Tbl_Sitestyle_Csses" ThisKey="Fld_Sitestyle_Language_Id" OtherKey="Fld_Sitestyle_Css_LanguageId" Type="Tbl_Sitestyle_Css" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_Font" Member="Tbl_Sitestyle_Fonts" ThisKey="Fld_Sitestyle_Language_Id" OtherKey="Fld_Sitestyle_Font_LanguageId" Type="Tbl_Sitestyle_Font" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_MenuLanguage" Member="Tbl_Sitestyle_MenuLanguages" ThisKey="Fld_Sitestyle_Language_Id" OtherKey="Fld_Sitestyle_MenuLanguage_LanguageId" Type="Tbl_Sitestyle_MenuLanguage" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_Metadata" Member="Tbl_Sitestyle_Metadatas" ThisKey="Fld_Sitestyle_Language_Id" OtherKey="Fld_Sitestyle_Metadata_LanguageId" Type="Tbl_Sitestyle_Metadata" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Users_UsersActivityGroupLanguage" Member="Tbl_Users_UsersActivityGroupLanguages" ThisKey="Fld_Sitestyle_Language_Id" OtherKey="Fld_Users_UsersActivityGroupLanguage_LanguageId" Type="Tbl_Users_UsersActivityGroupLanguage" />
+      <Association Name="Tbl_Sitestyle_Iso639_1_Tbl_Sitestyle_Language" Member="Tbl_Sitestyle_Iso639_1" ThisKey="Fld_Sitestyle_Language_Iso639_1_Id" OtherKey="Fld_Sitestyle_Iso639_1_Id" Type="Tbl_Sitestyle_Iso639_1" IsForeignKey="true" />
+      <Association Name="Tbl_Sitestyle_Iso639_2_Tbl_Sitestyle_Language" Member="Tbl_Sitestyle_Iso639_2" ThisKey="Fld_Sitestyle_Language_Iso639_2_Id" OtherKey="Fld_Sitestyle_Iso639_2_Id" Type="Tbl_Sitestyle_Iso639_2" IsForeignKey="true" />
+      <Association Name="Tbl_Sitestyle_Iso639_3_Tbl_Sitestyle_Language" Member="Tbl_Sitestyle_Iso639_3" ThisKey="Fld_Sitestyle_Language_Iso639_3_Id" OtherKey="Fld_Sitestyle_Iso639_3_Id" Type="Tbl_Sitestyle_Iso639_3" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Menu" Member="Tbl_Sitestyle_Menus">
+    <Type Name="Tbl_Sitestyle_Menu">
+      <Column Name="Fld_Sitestyle_Menu_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Menu_Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Menu_Hotkey" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Menu_FontIcon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Menu_ImageIcon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Menu_AccessId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Menu_Tbl_Sitestyle_MenuLanguage" Member="Tbl_Sitestyle_MenuLanguages" ThisKey="Fld_Sitestyle_Menu_Id" OtherKey="Fld_Sitestyle_MenuLanguage_MenuId" Type="Tbl_Sitestyle_MenuLanguage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_MenuLanguage" Member="Tbl_Sitestyle_MenuLanguages">
+    <Type Name="Tbl_Sitestyle_MenuLanguage">
+      <Column Name="Fld_Sitestyle_MenuLanguage_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_MenuLanguage_Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_MenuLanguage_Tooltip" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_MenuLanguage_MenuId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_MenuLanguage_LanguageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_MenuLanguage" Member="Tbl_Sitestyle_Language" ThisKey="Fld_Sitestyle_MenuLanguage_LanguageId" OtherKey="Fld_Sitestyle_Language_Id" Type="Tbl_Sitestyle_Language" IsForeignKey="true" />
+      <Association Name="Tbl_Sitestyle_Menu_Tbl_Sitestyle_MenuLanguage" Member="Tbl_Sitestyle_Menu" ThisKey="Fld_Sitestyle_MenuLanguage_MenuId" OtherKey="Fld_Sitestyle_Menu_Id" Type="Tbl_Sitestyle_Menu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Sitestyle_Metadata" Member="Tbl_Sitestyle_Metadatas">
+    <Type Name="Tbl_Sitestyle_Metadata">
+      <Column Name="Fld_Sitestyle_Metadata_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Sitestyle_Metadata_Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Sitestyle_Metadata_LanguageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Sitestyle_Metadata" Member="Tbl_Sitestyle_Language" ThisKey="Fld_Sitestyle_Metadata_LanguageId" OtherKey="Fld_Sitestyle_Language_Id" Type="Tbl_Sitestyle_Language" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Users_UsersActivityGroup" Member="Tbl_Users_UsersActivityGroups">
+    <Type Name="Tbl_Users_UsersActivityGroup">
+      <Column Name="Fld_Users_UsersActivityGroup_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Users_UsersActivityGroup_Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Tbl_Users_UsersActivityGroup_Tbl_Users_UsersActivityGroupLanguage" Member="Tbl_Users_UsersActivityGroupLanguages" ThisKey="Fld_Users_UsersActivityGroup_Id" OtherKey="Fld_Users_UsersActivityGroupLanguage_UsersActivityGroupId" Type="Tbl_Users_UsersActivityGroupLanguage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Users_UsersActivityGroupLanguage" Member="Tbl_Users_UsersActivityGroupLanguages">
+    <Type Name="Tbl_Users_UsersActivityGroupLanguage">
+      <Column Name="Fld_Users_UsersActivityGroupLanguage_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fld_Users_UsersActivityGroupLanguage_Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fld_Users_UsersActivityGroupLanguage_UsersActivityGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fld_Users_UsersActivityGroupLanguage_LanguageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Sitestyle_Language_Tbl_Users_UsersActivityGroupLanguage" Member="Tbl_Sitestyle_Language" ThisKey="Fld_Users_UsersActivityGroupLanguage_LanguageId" OtherKey="Fld_Sitestyle_Language_Id" Type="Tbl_Sitestyle_Language" IsForeignKey="true" />
+      <Association Name="Tbl_Users_UsersActivityGroup_Tbl_Users_UsersActivityGroupLanguage" Member="Tbl_Users_UsersActivityGroup" ThisKey="Fld_Users_UsersActivityGroupLanguage_UsersActivityGroupId" OtherKey="Fld_Users_UsersActivityGroup_Id" Type="Tbl_Users_UsersActivityGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

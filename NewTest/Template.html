@@ -1,0 +1,50 @@
+﻿<html>
+<head>
+    <script src="/Scripts/jquery-3.3.1.js"></script>
+</head>
+<body dir="rtl">
+    <select id="theme">
+        <option value="template1">template1</option>
+        <option value="template3">template3</option>
+    </select>
+    <input id="t1" type="button" name="name" value="load" />
+
+    <div id="header"></div>
+    <div id="content">some text</div>
+    <div id="footer"></div>
+
+    <script>
+        $("#t1").click(function () {
+            var themeName = $('#theme').find(":selected").text();
+            $.ajax({
+                url: "template/" + themeName + "/head.txt",
+                dataType: "text",
+                async: false,
+                success: function (data) {
+                    $('head').empty().append(data);
+                }
+            });
+
+            $.ajax({
+                url: "template/" + themeName + "/header.txt",
+                dataType: "text",
+                async: false,
+                success: function (data) {
+                    $('#header').empty().append(data);
+                }
+            });
+
+            $.ajax({
+                url: "template/" + themeName + "/footer.txt",
+                dataType: "text",
+                async: false,
+                success: function (data) {
+                    $('#footer').empty().append(data);
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>

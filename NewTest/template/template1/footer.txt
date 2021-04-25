@@ -1,0 +1,21 @@
+﻿    <!--Start footer section-->
+    <nav class="navbar navbar-dark bg-dark bottomNav w-100">
+        <ul class="text-light lead">
+            <li class="nav-item badge bg-success">
+                شرکت:
+            </li>
+            <li class="nav-item badge bg-info">
+                سال مالی:99
+            </li>
+            <li class="nav-item badge bg-danger">
+                کاربر: فرهاد آریامرام (245)
+            </li>
+            <li class="nav-item badge bg-primary">
+                پرسنلی: فرهاد آریامرام
+            </li>
+            <li class="nav-item badge bg-warning">
+                تاریخ: 1399/14/02
+            </li>
+        </ul>
+    </nav>
+    <!--end footer section-->
